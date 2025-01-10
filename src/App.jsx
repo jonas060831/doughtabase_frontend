@@ -11,11 +11,7 @@ function App() {
       <NavBar />
 
       <h1>DoughtaBase</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+     
       <div className="startButtons">
       <button type="button" className="btn btn-dark">
         Get Started!

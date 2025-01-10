@@ -3,7 +3,7 @@ import { useState } from "react";
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import Owners from "./Owners";
-import GoogleMapAPI from "./Google_Map_API";
+import Map from "./Map";
 
 const NavBar = () => {
   const [navMenu, setNavMenu] = useState("");
@@ -17,8 +17,8 @@ const NavBar = () => {
     if (navMenu === "Owners") {
       return <Owners />;
     }
-    if (navMenu === "GoogleMapAPI") {
-      return <GoogleMapAPI />;
+    if (navMenu === "Map") {
+      return <Map />;
     }
     return null;
   };
@@ -61,8 +61,8 @@ const NavBar = () => {
               </li>
               <li className="nav-item">
                 <button className="nav-link" 
-                onClick={() => handleClick("Owners")}>
-                  Owners
+                onClick={() => handleClick("Map")}>
+                  Map
                 </button>
               </li>
               <li className="nav-item dropdown">
