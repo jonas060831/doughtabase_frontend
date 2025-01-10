@@ -1,7 +1,8 @@
 import { useState } from "react";
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
-import Map from "./Map";
+import Owners from "./Owners";
+import GoogleMapAPI from "./Google_Map_API";
 
 const NavBar = () => {
   const [navMenu, setNavMenu] = useState("");
@@ -12,8 +13,11 @@ const NavBar = () => {
     if (navMenu === "Home") {
       return <Home />;
     }
-    if (navMenu === "Map") {
-      return <Map />;
+    if (navMenu === "Owners") {
+      return <Owners />;
+    }
+    if (navMenu === "GoogleMapAPI") {
+      return <GoogleMapAPI />;
     }
     return null;
   };
@@ -24,7 +28,7 @@ const NavBar = () => {
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             <img
-              src="https://files.oaiusercontent.com/file-VG1r6ykNyf4aBWvBb1QrLV?se=2025-01-09T22%3A54%3A09Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D5683c123-2a4d-4f43-9fbc-14e0632a72ad.webp&sig=ZOEuIxLSm/jHaUYNCjD7MHcw2Qxne8C%2BLBdtbFcYCZM%3D"
+              src="src/assets/DALL·E 2025-01-10 10.47.27 - A creative and modern icon for a bakery DoughtaBase, combining a database stack symbol with bakery elements. The icon features a database cylinder wit.webp"
               alt="Logo"
               width="30"
               height="24"
