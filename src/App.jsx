@@ -16,6 +16,13 @@ function App() {
           count is {count}
         </button>
       </div>
+      <div className="startButtons">
+      <button type="button" className="btn btn-dark">
+        Get Started!
+      </button>
+      <button type="button" className="btn btn-secondary">
+        Learn More
+      </button></div>
     </>
   );
 }

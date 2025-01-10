@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import ReactDOM from "react-dom/client";
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import Owners from "./Owners";
@@ -26,7 +27,7 @@ const NavBar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="">
             <img
               src="src/assets/DALL·E 2025-01-10 10.47.27 - A creative and modern icon for a bakery DoughtaBase, combining a database stack symbol with bakery elements. The icon features a database cylinder wit.webp"
               alt="Logo"
