@@ -5,6 +5,7 @@ import "./Map.css"; // CSS for fullscreen styling
 // Add your Mapbox access token
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN; 
 
+
 const Map = () => {
   const mapContainerRef = useRef(null);
 

@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import Home from "./Home";
-import Owners from "../Owners";
-import Map from "./Map";
+import Home from "../../Pages/Home";
+import Owners from "../../Owners";
+import Map from "../../Pages/Map";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
-
-
+  //state of input and we also need to debound the search as soon as possible
+  const [query, setQuery] = useState('')
 
   // const [navMenu, setNavMenu] = useState("");
   // const handleClick = (navMenu) => {
@@ -24,12 +25,26 @@ const NavBar = () => {
   //   }
   //   return null;
   // };
+  const navigate = useNavigate();
+
+
+  const handleQuery = (event) => {
+
+    //prevent reload of screen
+    event.preventDefault()
+
+    
+
+
+    navigate(`/map?query=${query}`)
+  }
 
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="">
+          
+          <NavLink to='/'>
             <img
               src="src/assets/DALL·E 2025-01-10 10.47.27 - A creative and modern icon for a bakery DoughtaBase, combining a database stack symbol with bakery elements. The icon features a database cylinder wit.webp"
               alt="Logo"
@@ -38,7 +53,9 @@ const NavBar = () => {
               className="d-inline-block align-text-top"
             />
             DoughtaBase 2025
-          </a>
+          </NavLink>
+
+          {/* toggle button */}
           <button
             className="navbar-toggler"
             type="button"
@@ -52,21 +69,6 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <button
-                  className="nav-link active"
-                  aria-current="page"
-                  onClick={() => handleClick("Home")}
-                >
-                  Home
-                </button>
-              </li>
-              <li className="nav-item">
-                <button className="nav-link" 
-                onClick={() => handleClick("Map")}>
-                  Map
-                </button>
-              </li>
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -79,22 +81,10 @@ const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Specialties
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Bakeries
-                    </a>
+                    <NavLink to="specialties" >Specialties</NavLink>
                   </li>
                   <li>
                     <hr className="dropdown-divider"></hr>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Category
-                    </a>
                   </li>
                 </ul>
               </li>
@@ -104,12 +94,13 @@ const NavBar = () => {
                 </a>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            <form className="d-flex" role="search" onSubmit={handleQuery}>
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={(e) => setQuery(e.target.value)}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
@@ -118,7 +109,7 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-      <div className="renderComponent">{renderComponent()}</div>
+      {/* <div className="renderComponent">{renderComponent()}</div> */}
     </>
   );
 };
