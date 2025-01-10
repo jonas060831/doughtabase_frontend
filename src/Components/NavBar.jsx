@@ -35,7 +35,7 @@ const NavBar = () => {
               height="24"
               className="d-inline-block align-text-top"
             />
-            Navbar
+            DoughtaBase 2025
           </a>
           <button
             className="navbar-toggler"
@@ -60,9 +60,10 @@ const NavBar = () => {
                 </button>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
+                <button className="nav-link" 
+                onClick={() => handleClick("Owners")}>
+                  Owners
+                </button>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -77,12 +78,12 @@ const NavBar = () => {
                 <ul className="dropdown-menu">
                   <li>
                     <a className="dropdown-item" href="#">
-                      Action
+                      Specialties
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Another action
+                      Bakeries
                     </a>
                   </li>
                   <li>
@@ -90,7 +91,7 @@ const NavBar = () => {
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Something else here
+                      Category
                     </a>
                   </li>
                 </ul>
