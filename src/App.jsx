@@ -1,30 +1,29 @@
-import { useState } from "react";
-
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Map from "./Components/Pages/Map";
 import "./App.css";
-import NavBar from "./Components/NavBar";
+import NavBar from "./Components/Pages/NavBar";
+import Home from "./Components/Pages/Home";
+import Specialties from "./Components/Pages/Specialties";
+import BakeryPage from "./Components/Pages/BakeryPage";
 
 function App() {
-  const [count, setCount] = useState(0);
+ 
 
   return (
     <>
+    <Router>
       <NavBar />
-
-      <h1>DoughtaBase</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      <div className="startButtons">
-      <button type="button" className="btn btn-dark">
-        Get Started!
-      </button>
-      <button type="button" className="btn btn-secondary">
-        Learn More
-      </button></div>
+      <Routes>
+        <Route path='/' element= {<Home />} />
+        <Route path='/specialties' element= {<Specialties />} />
+        <Route path='/bakeries/:id' element= {<BakeryPage />} />
+        <Route path='/map' element= {<Map />} />
+      </Routes>
+      </Router>
     </>
   );
 }
+
 
 export default App;
