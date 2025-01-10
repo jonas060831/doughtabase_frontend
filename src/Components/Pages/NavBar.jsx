@@ -1,27 +1,29 @@
 import { useState } from "react";
-// import ReactDOM from "react-dom/client";
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 import Home from "./Home";
-import Owners from "./Owners";
+import Owners from "../Owners";
 import Map from "./Map";
 
 const NavBar = () => {
-  const [navMenu, setNavMenu] = useState("");
-  const handleClick = (navMenu) => {
-    setNavMenu(navMenu);
-  };
-  const renderComponent = () => {
-    if (navMenu === "Home") {
-      return <Home />;
-    }
-    if (navMenu === "Owners") {
-      return <Owners />;
-    }
-    if (navMenu === "Map") {
-      return <Map />;
-    }
-    return null;
-  };
+
+
+
+  // const [navMenu, setNavMenu] = useState("");
+  // const handleClick = (navMenu) => {
+  //   setNavMenu(navMenu);
+  // };
+  // const renderComponent = () => {
+  //   if (navMenu === "Home") {
+  //     return <Home />;
+  //   }
+  //   if (navMenu === "Owners") {
+  //     return <Owners />;
+  //   }
+  //   if (navMenu === "Map") {
+  //     return <Map />;
+  //   }
+  //   return null;
+  // };
 
   return (
     <>
