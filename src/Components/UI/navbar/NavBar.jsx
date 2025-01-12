@@ -2,46 +2,42 @@ import { useState } from "react";
 
 import Home from "../../Pages/Home";
 import Owners from "../../Owners";
-import Map from "../../Pages/Map";
 import { NavLink, useNavigate } from "react-router-dom";
+import { queryBakeries } from "../../../services/bakeryServices";
 
 const NavBar = () => {
   //state of input and we also need to debound the search as soon as possible
   const [query, setQuery] = useState('')
-
-  // const [navMenu, setNavMenu] = useState("");
-  // const handleClick = (navMenu) => {
-  //   setNavMenu(navMenu);
-  // };
-  // const renderComponent = () => {
-  //   if (navMenu === "Home") {
-  //     return <Home />;
-  //   }
-  //   if (navMenu === "Owners") {
-  //     return <Owners />;
-  //   }
-  //   if (navMenu === "Map") {
-  //     return <Map />;
-  //   }
-  //   return null;
-  // };
   const navigate = useNavigate();
-
-
-  const handleQuery = (event) => {
+  const handleQuery = async (event) => {
 
     //prevent reload of screen
     event.preventDefault()
 
-    
+    try {
+      //1. we did do a server request
+      const match = await queryBakeries(query)
 
+      //3. now we are entertaining the forks
+      if(!query.trim()) { //query is empty
+        alert('please search using name or city')
+        setQuery('')
+      } else if (match.length === 0) {
+        alert('sorry no result found from our database')
+        setQuery('')
+      } else {
+        //we dont want to navigate when query is empty
+        navigate(`/map?query=${query}`)
+      }
 
-    navigate(`/map?query=${query}`)
+    } catch (error) {
+     console.log(error) 
+    }
   }
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light z-1" >
         <div className="container-fluid">
           
           <NavLink to='/'>
@@ -94,16 +90,20 @@ const NavBar = () => {
                 </a>
               </li>
             </ul>
+
+
+            {/* search box */}
             <form className="d-flex" role="search" onSubmit={handleQuery}>
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="try bakery or city"
                 aria-label="Search"
+                value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
               <button className="btn btn-outline-success" type="submit">
-                Search
+                <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
           </div>
