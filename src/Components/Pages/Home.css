@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Beth+Ellen&display=swap');
+
+
+.home-div {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-header {
+    padding: 2rem 1rem;
+}
+
+.home-header > h1 {
+    color: #745537;
+    font-family: 'Beth Ellen', 'Tahoma';
+}
+
+.home-about {
+    background: #745537;
+}
+
+.photos {
+    display: flex;
+    flex-direction: row;
+}
+
+.photosdiv1 {
+    flex: 2;
+    background-color: blue;
+}
+
+.photo1 {
+    height: 100%;
+    width: 100%;
+}
+
+.photo1 img {
+    width: 100%;
+    height: 100%;
+}
+
+.photo2and3 {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    width: 50%;
+}
+
+.photo2 img {
+    
+    height: 100%;
+    width: 100%;
+}
+
+.photo3 img {
+    
+    height: 100%;
+    width: 100%;
+}
