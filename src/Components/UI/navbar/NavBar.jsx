@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import './Navbar.css' 
 import { NavLink, useNavigate } from "react-router-dom";
 import { queryBakeries } from "../../../services/bakeryServices";
 
@@ -35,19 +35,21 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top z-1" >
+      <nav className="navbar navbar-expand-lg navbar-light sticky-top z-1" style={{backgroundColor: '#745537', color: 'white'}}>
         <div className="container-fluid">
           
-          <NavLink to='/'>
+          <NavLink className="homeLink" to='/'>
             <img
               src="src/assets/DALL·E 2025-01-10 10.47.27 - A creative and modern icon for a bakery DoughtaBase, combining a database stack symbol with bakery elements. The icon features a database cylinder wit.webp"
               alt="Logo"
               width="30"
               height="24"
               className="d-inline-block align-text-top"
+              // style={{color: 'white'}}
             />
             DoughtaBase 2025
           </NavLink>
+
 
           {/* toggle button */}
           <button
