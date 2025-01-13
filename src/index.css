@@ -80,3 +80,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+:root {
+  --default-theme-color : #745537
+}
+

@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import Home from "../../Pages/Home";
-import Owners from "../../Owners";
 import { NavLink, useNavigate } from "react-router-dom";
 import { queryBakeries } from "../../../services/bakeryServices";
 
@@ -37,7 +35,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light z-1" >
+      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top z-1" >
         <div className="container-fluid">
           
           <NavLink to='/'>

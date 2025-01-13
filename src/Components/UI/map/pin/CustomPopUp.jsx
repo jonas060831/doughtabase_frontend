@@ -46,14 +46,14 @@ const CustomPopUp = ({ bakery, navigate, handlePlotRoute }) => {
 
 
         <div style={{ display: 'flex', gap: '1rem' }}>
-            <button type="button" className="btn btn-primary position-relative" onClick={() => navigate(`/bakeries/${bakery.id}`)}>
-                <i className="fa-solid fa-circle-info"></i>
+            <button type="button" className="btn position-relative" style={{ backgroundColor: '#d0bda7', color: 'white' }} onClick={() => navigate(`/bakeries/${bakery.id}`)}>
+                <i class="fa-solid fa-bread-slice"></i>
                 <span className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                     <span className="visually-hidden">New alerts</span>
                 </span>
             </button>
 
-            <button type="button" className="btn btn-primary position-relative" onClick={() => handlePlotRoute()}>
+            <button type="button" className="btn position-relative" style={{ backgroundColor: '#d0bda7', color: 'white' }} onClick={() => handlePlotRoute()}>
                 <i className="fa-solid fa-diamond-turn-right"></i>
             </button>
         </div>
