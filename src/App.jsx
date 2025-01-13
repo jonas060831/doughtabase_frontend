@@ -5,6 +5,8 @@ import Specialties from "./Components/Pages/Specialties";
 import BakeryPage from "./Components/Pages/BakeryPage";
 import NavBar from "./Components/UI/navbar/NavBar";
 import About from "./Components/Pages/About";
+import Footer from "./Components/UI/Footer/Footer"
+
 const  App = () => {
  
 
@@ -17,8 +19,8 @@ const  App = () => {
         <Route path='/bakeries/:id' element= {<BakeryPage />} />
         <Route path='/map' element= {<Map />} />
         <Route path='/about' element= {<About />} />
-
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

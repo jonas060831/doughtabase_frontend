@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import './Home.css'
 import PhotoGallery from "../UI/modules/PhotoGallery";
 
+
 const Home = () => {
   
 
@@ -13,18 +14,20 @@ const Home = () => {
     {/* <NavBar/> */}
     <div className="home-div">
 
+        <img className="logo" src="/logo-3.png" alt="Logo"/>
+
       <header className="home-header text-center py-5">
         <h1 className="display-4 fw-bold">DoughtaBase</h1>
-        <p >An address book for bakers and their baking neighbors.</p>
+        <p className="subtitle">An address book for bakers and their baking neighbors.</p>
       </header>
-
-        <PhotoGallery/>
-
         <button className="about-button" onClick={() => {
             navigate("/about")
         }}>About</button>
-        
+        <PhotoGallery/>        
     </div>
+
+
+    
     </>    
   );
 };
