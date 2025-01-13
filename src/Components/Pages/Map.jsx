@@ -27,7 +27,7 @@ const Map = () => {
   const loadMap = () => {
     const initialMap = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: import.meta.env.VITE_MAPBOX_CSS, //Nate Maps Design
+      // style: import.meta.env.VITE_MAPBOX_CSS, //Nate Maps Design
       center: startingLocationView,
       zoom: 12,
     });
@@ -111,7 +111,7 @@ const Map = () => {
         "line-cap": "round",
       },
       paint: {
-        "line-color": "#0000FF",
+        "line-color": "#ab9d8e",
         "line-width": 10,
         "line-opacity": 1,
         "line-dasharray": [2, 4]
@@ -128,7 +128,7 @@ const Map = () => {
         "line-cap": "round",
       },
       paint: {
-        "line-color": "#0000FF",
+        "line-color": "#ab9d8e",
         "line-width": 6,
         "line-opacity": 0.9,
       },
@@ -198,7 +198,7 @@ const Map = () => {
           root.render(<CustomPopUp bakery={bakery} navigate={navigate} handlePlotRoute={ () => handlePlotRoute(userApproximateLocation, bakeryLocForRouteHandling)}/>);
       
           // pin the the bakeries in the map
-          new mapboxgl.Marker({ element: bakeryMarker })
+          new mapboxgl.Marker({ element: bakeryMarker, width: '100px', height: '100px' })
             .setLngLat([lng, lat])
             .setPopup(new mapboxgl.Popup().setDOMContent(popupNode))
             .addTo(map);
