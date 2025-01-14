@@ -1,158 +1,204 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { getBakery, getBakeryPhoto } from '../../services/bakeryServices';
-import useTimeAgo from '../UI/utils/timeAgo';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { getBakery, getBakeryPhoto } from '../../services/bakeryServices'
+import useTimeAgo from '../UI/utils/timeAgo'
 
-import './BakeryPage.css';
-import BakedGood from '../UI/modules/BakedGood';
+import './BakeryPage.css'
+import BakedGood from '../UI/modules/BakedGood'
 
 const Bakery = () => {
-  const { id } = useParams();
-  const [bakery, setBakery] = useState(null);
-  const [menu, setMenu] = useState(null);
-  const navigate = useNavigate();
+  const { id } = useParams()
+  const [bakery, setBakery] = useState(undefined)
 
+  const navigate = useNavigate()
+  
   useEffect(() => {
-    fetchBakeryInformation();
-  }, [id]);
+    fetchBakeryInformation()
 
-  const formatMenu = (DBbakery) => {
-    const categorizedMenu = DBbakery.menu.reduce((accumulator, currentItem) => {
-      const category = currentItem.category;
-      if (!accumulator[category]) {
-        accumulator[category] = [];
+
+  },[])
+
+  const dummyData = {
+    "id": 1,
+    "name": "85°C Bakery Cafe",
+    "street": "Serramonte Center",
+    "city": "Daly City",
+    "state": "CA",
+    "longitude": -122.4705271,
+    "latitude": 37.6699828,
+    "registered_date": "2025-01-10T14:47:41.187246Z",
+    "apt_or_unit": "#5-L",
+    "photo_url": null,
+    "menu": [
+        {
+            "id": 1,
+            "image_url": "https://i.imgur.com/QJE9WhX.jpeg",
+            "category": "breads",
+            "name": "Holiday Rolls",
+            "price": "10.50",
+            "rating": 5,
+            "registered_date": "2025-01-10T16:49:07.977394Z",
+            "bakery": 1
+        },
+        {
+          "id": 2,
+          "image_url": "https://i.imgur.com/QJE9WhX.jpeg",
+          "category": "breads",
+          "name": "Dinner Rolls",
+          "price": "5.50",
+          "rating": 5,
+          "registered_date": "2025-01-10T16:49:07.977394Z",
+          "bakery": 1
+      },
+      {
+        "id": 3,
+        "image_url": "https://i.imgur.com/QJE9WhX.jpeg",
+        "category": "cookies",
+        "name": "M & M Cookie",
+        "price": "15.50",
+        "rating": 5,
+        "registered_date": "2025-01-10T16:49:07.977394Z",
+        "bakery": 1
+      },
+      {
+        "id": 4,
+        "image_url": "https://i.imgur.com/QJE9WhX.jpeg",
+        "category": "cookies",
+        "name": "Chocolate Chip Cookie",
+        "price": "25.50",
+        "rating": 5,
+        "registered_date": "2025-01-10T16:49:07.977394Z",
+        "bakery": 1
+      },
+      ,
+      {
+        "id": 5,
+        "image_url": "https://i.imgur.com/QJE9WhX.jpeg",
+        "category": "pastries",
+        "name": "Key Lime curd",
+        "price": "19.50",
+        "rating": 5,
+        "registered_date": "2025-01-10T16:49:07.977394Z",
+        "bakery": 1
       }
-      accumulator[category].push(currentItem);
-      return accumulator;
-    }, {});
+    ]
+}
 
-    setMenu(categorizedMenu);
-  };
+// { breads : [{},{}], cookies: [{}, {}], pastries: [{}] }
+ const categorizedMenu = dummyData.menu.reduce((accumulator, currentItem) => {
+  //initialize the category
+  const category = currentItem.category
+  //we can populate each category
+  if(accumulator[category]) accumulator[category].push(currentItem)
+  
+  //initialize the category with value
+  if(!accumulator[category]) accumulator[category] = [currentItem]
+  //return
+  return accumulator
+
+ }, {})
+
 
   const fetchBakeryInformation = async () => {
     try {
-      const bakeryData = await getBakery(id);
+      const bakeryData = await getBakery(id)
 
-      setBakery(bakeryData);
+      setBakery(bakeryData)
 
-      const downloadedPhoto = await getBakeryPhoto(bakeryData);
-      formatMenu(bakeryData);
+      const downloadedPhoto = await getBakeryPhoto(bakeryData)
 
-      setBakery((prev) => ({
-        ...prev,
-        photo_url: downloadedPhoto,
+      setBakery(prevValue => ({
+        ...prevValue,
+        photo_url: downloadedPhoto
       }));
-    } catch (error) {
-      alert('Invalid input or error fetching bakery data.');
-      navigate(`/`);
-    }
-  };
 
+    } catch (error) {
+
+      alert('Sorry invalid input')
+      
+      navigate(`/`)
+    }
+  }
+
+  // Always call the hook, even if bakery or registered_date is undefined
   const timeAgo = useTimeAgo(bakery?.registered_date);
 
-  if (!bakery && !menu) return <div>Loading...</div>;
-  if (bakery?.detail) return <div>Sorry, no data found.</div>;
+  //while waiting for data
+  if(!bakery) return <>Loading...</>
+  //if there is no data found
+  if(bakery.detail) return <>Sorry No data found..</>
 
   return (
     <div>
-      <div className="bakery_info">
-        <div
-          className="bakery header"
-          style={{
-            marginTop: '5rem',
-            display: 'flex',
-            justifyContent: 'center',
-            padding: '2rem',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem'}}>
-            {bakery.photo_url ? (
-              <img
-                src={bakery.photo_url}
-                alt="Storefront"
-                style={{
-                  width: '225px',
-                  height: '225px',
-                  objectFit: 'cover',
-                  borderRadius: '100vw',
-                  border: '2px solid #d2c2ae',
-                  boxShadow: '1px 3px 5px black',
-                }}
-              />
-            ) : (
-              <img src="/3dshop.gif" alt="Loading" style={{ width: '300px' }} />
-            )}
 
-            <h1>{bakery.name}</h1>
-          </div>
+      {/* <header style={{paddingTop: '13rem'}}>
+
+        { !bakery.photo_url ? <img src='../3dshop.gif' alt='./assets/3dshop.gif'style={{ width: '300px', height: 'auto', objectFit: 'cover' }} /> : <img src={bakery.photo_url} alt={bakery.photo_url} style={{ width: '300px', height: 'auto', objectFit: 'contain' }}/>}
+        <h1>{bakery.name}</h1>
+        <h3>{bakery.street} {bakery.apt_or_unit}</h3>
+        <h5>{bakery.city}</h5>
+        <h5>member since: {timeAgo || "N/A"}</h5>
+      </header> */}
+
+      {/* show menu */}
+      
+
+      <div className="bakery_info">
+
+        <div className="bakery header">
+          
+          {
+            dummyData.photo_url ? (
+              <img src={dummyData.photo_url} alt="store front" style={{ width: '100px' }}/>
+            ) : (
+              <img src='/3dshop.gif' style={{ width: '100px' }}/>
+            )
+          }
+
+          {dummyData.name}
         </div>
 
-        <div className="content" style={{ display : 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <div className="row">
-            <div className="col-3">
-              <div id="list-example" className="list-group">
-                {menu ? (
-                  Object.keys(menu).map((category, index) => (
-                    <a
-                      key={index}
-                      className="list-group-item list-group-item-action"
-                      href={`#${category}`}
-                    >
-                      {category}
-                      <span className="badge text-bg-danger" style={{ float: 'right' }}>
-                        {menu[category].length}
-                      </span>
-                    </a>
-                  ))
-                ) : (
-                  <div>Loading...</div>
-                )}
-              </div>
-            </div>
-            <div className="col-8">
-              <div
-                data-bs-spy="scroll"
-                data-bs-target="#list-example"
-                data-bs-smooth-scroll="true"
-                className="scrollspy-example"
-                tabIndex="0"
-              >
-                {menu &&
-                  Object.keys(menu).map((category, index) => (
-                    <div className="category_and_content" key={index}>
-                      <h4
-                        id={category}
-                        className="bg-danger text-white"
-                        style={{
-                          borderTopLeftRadius: '3px',
-                          padding: '1rem',
-                        }}
-                      >
-                        {`${category.charAt(0).toUpperCase()}${category.slice(1)}`}
-                      </h4>
+        <div className="content">
 
-                      <div
-                        style={{
-                          display: 'flex',
-                          gap: '3rem',
-                          flexWrap: 'wrap',
-                          marginLeft: '2rem',
-                          padding: '2rem',
-                        }}
-                      >
-                        {menu[category].map((item, index) => (
-                          <BakedGood item={item} key={index} />
-                        ))}
+            <div className="row" style={{ display: 'flex', flexWrap: 'wrap' }}>
+              <div className="col-2">
+                <div id="list-example" className="list-group">
+
+                  {
+                    Object.keys(categorizedMenu).map((category, index) => (
+                      <Link key={index} className="list-group-item list-group-item-action" href={`${category}`}>{category}</Link>
+                    ))
+                  }
+                </div>
+              </div>
+              <div className="col-8">
+                <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" className="scrollspy-example" tabIndex="0">
+                  
+                  {
+                    Object.keys(categorizedMenu).map( (category, index) => (
+                      <div className='category_and_content' key={index}>
+                          <h4 id={category} className='srtgertgret bg-danger text-white'>{category}</h4>
+
+                          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+
+                          {
+                            categorizedMenu[category].map((item, index) => (
+                              <BakedGood item={item} key={index}/>
+                            ))
+                          }
+                          </div>
+
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  }
+                </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default Bakery;
+    </div>
+  )
+}
+
+export default Bakery
