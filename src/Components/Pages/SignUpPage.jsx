@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { registerStandardUser } from '../../services/authServices'
 import { useNavigate } from 'react-router-dom'
+import './SignUpPage.css'
 
 const SignUpPage = () => {
   const navigate = useNavigate()
@@ -31,10 +32,11 @@ const SignUpPage = () => {
   }
 
   return (
-    <div>
-        <h1>SignUpPage</h1>
-
-        <form onSubmit={handleSubmit}>
+    <div className="signup-div">
+      <div className="signup-header">
+        <h1>Sign-up</h1>
+      </div>
+        <form className="signup-form"onSubmit={handleSubmit}>
 
             <label htmlFor="email"> Email: </label>
             <input 
@@ -56,7 +58,7 @@ const SignUpPage = () => {
                 onChange={handleChange}
             />
 
-        
+          {/*         
             <label htmlFor="repeat_password"> Repeat Password: </label>
             <input 
                 type="password"
@@ -65,7 +67,8 @@ const SignUpPage = () => {
                 id="repeat_password"
                 value={formData.repeat_password}
                 onChange={handleChange}
-            />
+            /> */}
+
             <label htmlFor="first_name"> First Name: </label>
             <input 
                 type="text"
@@ -86,7 +89,7 @@ const SignUpPage = () => {
             />
 
             <input
-              type="submit"
+              type="submit" className="submit"
 
             />
         </form>
