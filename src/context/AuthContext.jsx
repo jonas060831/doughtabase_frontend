@@ -16,8 +16,10 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    
+    setLoading(true)
 
-    if (token) {
+    if (token && token !== 'undefined') {
       try {
         const decoded = jwtDecode(token);
         const currentTime = Date.now() / 1000; // Get current time in seconds

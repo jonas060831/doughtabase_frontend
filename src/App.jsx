@@ -9,13 +9,15 @@ import Footer from "./Components/UI/Footer/Footer"
 import LoginPage from "./Components/Pages/LoginPage";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import SignUpPage from "./Components/Pages/SignUpPage.jsx";
+import OpenBakeryButton from "./Components/UI/bakery/OpenBakeryButton.jsx";
 
 const  App = () => {
  
   return (
-    
-      <BrowserRouter>
-      <AuthProvider>
+    <AuthProvider>
+      <>
+        <BrowserRouter>
+      
         <NavBar />
         <Routes>
           {/* unprotected routes */}
@@ -30,8 +32,11 @@ const  App = () => {
           {/* protected routes */}
         </Routes>
         <Footer/>
-        </AuthProvider>
       </BrowserRouter>
+      <OpenBakeryButton />
+      
+      </>
+      </AuthProvider>
   );
 }
 
