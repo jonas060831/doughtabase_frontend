@@ -62,3 +62,7 @@
     font-family: 'Libre Baskerville', 'Tahoma';
     cursor: pointer;
 }
+
+.about-back-button:hover {
+    background-color: #5c432b;
+}

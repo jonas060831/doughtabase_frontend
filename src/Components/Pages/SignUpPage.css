@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
-.login-div {
+.signup-div {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -10,13 +10,13 @@
     padding: 2rem;
 }
 
-.login-header > h1 {
+.signup-header > h1 {
     color: #745537;
     font-family: 'Beth Ellen', 'Tahoma';
     margin-bottom: 2rem;
 }
 
-.login-form {
+.signup-form {
     background: white;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -25,14 +25,14 @@
     max-width: 400px;
 }
 
-.login-form label {
+.signup-form label {
     font-family: 'Libre Baskerville', 'Tahoma';
     display: block;
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
 
-.login-form input {
+.signup-form input {
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 1rem;
@@ -42,7 +42,7 @@
     font-family: 'Libre Baskerville', 'Tahoma';
 }
 
-.login-form .submit, .signup-link {
+.signup-form .submit {
     background-color: #745537;
     color: white;
     border: none;
@@ -52,7 +52,8 @@
     cursor: pointer;
 }
 
-.login-form .submit:hover {
+.signup-form .submit:hover {
     background-color: #5c432b;
 }
 
+/* eriuhgeiruhguierg */
