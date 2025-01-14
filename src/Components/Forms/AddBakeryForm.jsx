@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext';
-
+import { createBakery } from '../../services/bakeryServices'
 import { states } from "../../datas/us_cities";
 
 
 const AddBakeryForm = ({ user }) => {
     const { login } = useAuth()
-  
     const [formData, setFormData] = useState({
       email : "",
       password : ""
@@ -18,17 +17,15 @@ const AddBakeryForm = ({ user }) => {
       event.preventDefault()
      
       console.log(formData)
-    //   try {
-    //       const response = await loginStandardUser(formData)
+      try {
+          const response = await createBakery(formData)
           
-    //       if(response.error) throw new Error(response.error);
-          
-    //       login(response.token)
-    //       navigate('/')
+          // if(response.error) throw new Error(response.error);          
+          console.log(response)      
   
-    //   } catch (error) {
-    //       alert(error.message)
-    //   }
+      } catch (error) {
+          alert(error.message)
+      }
   
     }
 
@@ -79,12 +76,12 @@ const AddBakeryForm = ({ user }) => {
             onChange={handleChange}
             />
 
-            <label htmlFor="city"> State </label>
+            <label htmlFor="state"> State </label>
             <select
-             className="city"
-             name="city"
-             id="city"
-             value={formData.city}
+             className="state"
+             name="state"
+             id="state"
+             value={formData.state}
              onChange={handleChange}
             >
                 {
