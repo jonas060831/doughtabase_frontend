@@ -2,16 +2,20 @@
 const BASE_URL = import.meta.env.VITE_DOUGHTABASE_SERVER
 
 export const getBakeries = async () => {
-
     try {
-        const res = await fetch(`${BASE_URL}/bakeries`)
-        const data = await res.json()
-
-        return data //[bakery]
+      const response = await fetch(`${BASE_URL}/bakeries`); 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log('Data received from API:', data); // Log the raw response
+      return data;
     } catch (error) {
-        console.log(error)
+      console.error('Error in getBakeries:', error.message);
+      return [];
     }
-}
+  };
+
 export const getBakery = async (id) => {
 
     //localhost:8000/api/bakeries/1

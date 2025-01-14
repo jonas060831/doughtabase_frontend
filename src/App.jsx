@@ -10,6 +10,7 @@ import LoginPage from "./Components/Pages/LoginPage";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import SignUpPage from "./Components/Pages/SignUpPage.jsx";
 import OpenBakeryButton from "./Components/UI/bakery/OpenBakeryButton.jsx";
+import BakeryIndex from "./Components/Pages/BakeryIndex.jsx";
 
 const  App = () => {
  
@@ -24,6 +25,7 @@ const  App = () => {
           <Route path='/' element= {<Home />} />
           <Route path='/login' element= {<LoginPage />} />
           <Route path='/specialties' element= {<Specialties />} />
+          <Route path='/bakeries' element= {<BakeryIndex />} />
           <Route path='/bakeries/:id' element= {<BakeryPage />} />
           <Route path='/map' element= {<Map />} />
           <Route path='/about' element= {<About />} />
