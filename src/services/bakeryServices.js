@@ -76,3 +76,4 @@ export const queryBakeries = async (searchQuery) => {
     }
 
 }
+
