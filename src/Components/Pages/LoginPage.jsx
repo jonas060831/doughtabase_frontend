@@ -21,13 +21,13 @@ const LoginPage = () => {
     try {
         const response = await loginStandardUser(formData)
         
-        alert(response.message)
-
+        if(response.error) throw new Error(response.error);
+        
         login(response.token)
         navigate('/')
 
     } catch (error) {
-        alert(error)
+        alert(error.message)
     }
 
   }

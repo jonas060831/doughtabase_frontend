@@ -1,0 +1,12 @@
+.floating_button {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    width: 60px;
+    height: 60px;
+    border-radius: 100vw;
+    background-color: #745537;
+    color: white;
+    border: none;
+    filter: drop-shadow(1px 1px 20px black);
+}
