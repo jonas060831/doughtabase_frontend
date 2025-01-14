@@ -2,11 +2,14 @@ import { useState } from "react";
 import './Navbar.css' 
 import { NavLink, useNavigate } from "react-router-dom";
 import { queryBakeries } from "../../../services/bakeryServices";
+import AuthButton from "../auth-button/AuthButton";
 
 const NavBar = () => {
   //state of input and we also need to debound the search as soon as possible
   const [query, setQuery] = useState('')
   const navigate = useNavigate();
+
+
   const handleQuery = async (event) => {
 
     //prevent reload of screen
@@ -32,6 +35,7 @@ const NavBar = () => {
      console.log(error) 
     }
   }
+
 
   return (
     <>
@@ -106,6 +110,8 @@ const NavBar = () => {
                 <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
+
+            <AuthButton />
           </div>
         </div>
       </nav>

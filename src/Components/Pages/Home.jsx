@@ -3,13 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 // import NavBar from "./Components/UI/navbar/NavBar";
 import './Home.css'
 import PhotoGallery from "../UI/modules/PhotoGallery";
+import { auth } from "../../helpers";
 
 
 const Home = () => {
   
 
   const navigate = useNavigate()
-    return (
+  const user = auth()
+
+  return (
     <>
     {/* <NavBar/> */}
     <div className="home-div">
