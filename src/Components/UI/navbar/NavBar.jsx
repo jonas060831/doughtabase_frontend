@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './Navbar.css' 
+import './NavBar.css' 
 import { NavLink, useNavigate } from "react-router-dom";
 import { queryBakeries } from "../../../services/bakeryServices";
 import AuthButton from "../auth-button/AuthButton";
