@@ -4,8 +4,8 @@ import { createBakery } from '../../services/bakeryServices'
 import { states } from "../../datas/us_cities";
 
 
-const AddBakeryForm = ({ user }) => {
-    const { login } = useAuth()
+const AddBakeryForm = ({  }) => {
+    const { login, user } = useAuth()
     const [formData, setFormData] = useState({
       email : "",
       password : ""
@@ -15,7 +15,9 @@ const AddBakeryForm = ({ user }) => {
   
     const handleSubmit = async (event) => {
       event.preventDefault()
-     
+      const creator = user.user_id
+      const authData = [...formData, creator];
+      setFormData(authData)      
       console.log(formData)
       try {
           const response = await createBakery(formData)
