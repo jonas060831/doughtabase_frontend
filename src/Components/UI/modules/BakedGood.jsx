@@ -16,6 +16,7 @@ const BakedGood = ({ item }) => {
 
                 <a href="#" className="btn" style={{ backgroundColor: '#745537', color: 'white' }}>Add to Cart</a>
                 
+            <i className="star" />
             </div>
         </div>
   )
