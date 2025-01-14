@@ -87,7 +87,7 @@ const BakeryIndex = () => {
                 <p>{shop.street}, {shop.city}, {shop.state}</p>
                 <p>{shop.phone_number}</p>
                 {/* Display more details or link to individual bakery page */}
-                <button onClick={() => navigate(`/bakery/${shop.id}`)}>View Details</button>
+                <button onClick={() => navigate(`/bakeries/${shop.id}`)}>View Details</button>
               </div>
             </div>
           ))}
