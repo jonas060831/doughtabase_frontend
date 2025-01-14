@@ -57,7 +57,7 @@ const LoginPage = () => {
 
         <input type="submit" className="submit" />
       </form>
-      <Link to="/signup">Sign Up</Link>
+      <Link className="signup-link"to="/signup">Sign Up</Link>
     </div>
   );
 };
