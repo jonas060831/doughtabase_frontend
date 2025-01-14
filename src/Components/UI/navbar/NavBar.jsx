@@ -1,48 +1,47 @@
 import { useState } from "react";
-import './NavBar.css' 
+import "./NavBar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { queryBakeries } from "../../../services/bakeryServices";
 import AuthButton from "../auth-button/AuthButton";
 
 const NavBar = () => {
   //state of input and we also need to debound the search as soon as possible
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-
   const handleQuery = async (event) => {
-
     //prevent reload of screen
-    event.preventDefault()
+    event.preventDefault();
 
     try {
       //1. we did do a server request
-      const match = await queryBakeries(query)
+      const match = await queryBakeries(query);
 
       //3. now we are entertaining the forks
-      if(!query.trim()) { //query is empty
-        alert('please search using name or city')
-        setQuery('')
+      if (!query.trim()) {
+        //query is empty
+        alert("please search using name or city");
+        setQuery("");
       } else if (match.length === 0) {
-        alert('sorry no result found from our database')
-        setQuery('')
+        alert("sorry no result found from our database");
+        setQuery("");
       } else {
         //we dont want to navigate when query is empty
-        navigate(`/map?query=${query}`)
+        navigate(`/map?query=${query}`);
       }
-
     } catch (error) {
-     console.log(error) 
+      console.log(error);
     }
-  }
-
+  };
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light sticky-top z-1" style={{backgroundColor: '#745537', color: 'white'}}>
+      <nav
+        className="navbar navbar-expand-lg navbar-light sticky-top z-1"
+        style={{ backgroundColor: "#745537", color: "white" }}
+      >
         <div className="container-fluid">
-          
-          <NavLink className="homeLink" to='/'>
+          <NavLink className="homeLink" to="/">
             <img
               src="src/assets/DALL·E 2025-01-10 10.47.27 - A creative and modern icon for a bakery DoughtaBase, combining a database stack symbol with bakery elements. The icon features a database cylinder wit.webp"
               alt="Logo"
@@ -53,7 +52,6 @@ const NavBar = () => {
             />
             DoughtaBase 2025
           </NavLink>
-
 
           {/* toggle button */}
           <button
@@ -69,32 +67,26 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
+              <li className="nav-item">
+                <NavLink
+                  to="specialties"
+                  className="nav-link active"
+                  aria-current="page"
                   href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
                 >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <NavLink to="specialties" >Specialties</NavLink>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider"></hr>
-                  </li>
-                </ul>
+                  Speacialties
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled" aria-disabled="true">
-                  Log in
-                </a>
+                <NavLink
+                  to="bakeries"
+                  className="nav-link active"
+                  aria-disabled="true"
+                >
+                  Bakeries
+                </NavLink>
               </li>
             </ul>
-
 
             {/* search box */}
             <form className="d-flex" role="search" onSubmit={handleQuery}>
