@@ -84,30 +84,32 @@ const Bakery = () => {
 
       <div className="bakery_info">
 
-        <div className="bakery header">
+        <div className="bakery header" style={{ marginTop: '5rem', display: 'flex', flextDirection:'', justifyContent: 'center', padding: '2rem' }}>
           
-          {
-            bakery.photo_url ? (
-              <img src={bakery.photo_url} alt="store front" style={{ width: '100px' }}/>
-            ) : (
-              <img src='/3dshop.gif' style={{ width: '100px' }}/>
-            )
-          }
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+            {
+              bakery.photo_url ? (
+                <img src={bakery.photo_url} alt="store front" style={{ width: '225px', height: '225px', objectFit: 'cover', borderRadius: '100vw',border: '2px solid #d2c2ae', boxShadow: '1px 3px 5px black' }}/>
+              ) : (
+                <img src='/3dshop.gif' style={{ width: '300px' }}/>
+              )
+            }
 
-          {bakery.name}
+            {bakery.name}
+          </div>
         </div>
 
         <div className="content">
 
-            <div className="row" style={{ display: 'flex', flexWrap: 'wrap' }}>
-              <div className="col-2">
+            <div className="row" style={{ display: 'flex' }}>
+              <div className="col-3">
                 <div id="list-example" className="list-group">
 
                   {menu !== undefined ? (                    
                     Object.keys(menu).map((category, index) => (
                       <Link key={index} className="list-group-item list-group-item-action" href={`${category}`}>{category}</Link>
                     ))) : (
-                      <div>Loading~~*~*~*~**~*</div>
+                      <div>Loading.....</div>
                   )}
 
                 </div>
@@ -119,9 +121,9 @@ const Bakery = () => {
                     menu !== undefined ? (
                       Object.keys(menu).map( (category, index) => (
                         <div className='category_and_content' key={index}>
-                            <h4 id={category} className='srtgertgret bg-danger text-white'>{category}</h4>
+                            <h4 id={category} className='srtgertgret bg-danger text-white'>{`${category.charAt(0).toUpperCase()}${category.slice(1)}`}</h4>
   
-                            <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', marginLeft: '2rem', padding: '2rem' }}>
   
                             {
                               menu[category].map((item, index) => (
