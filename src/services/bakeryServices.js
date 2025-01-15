@@ -113,12 +113,36 @@ export const updateBakery = async (bakery, creatorId) => {
         const response = await res.json()
 
         if(response.ok) {
-            
+            const data = await response.json()
+
+            return data
         }
 
 
     } catch (error) {
-        
+        return error
     }
+}
 
+export const updateBakeryDetails = async (bakery) => {
+
+    try {
+        const res = await fetch(`${BASE_URL}/bakeries/${bakery.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type' : 'application/json' },
+            body: JSON.stringify({ bakery })
+            
+        })
+        const response = await res.json()
+
+        if(response.ok) {
+            const data = await response.json()
+
+            return data
+        }
+
+
+    } catch (error) {
+        return error
+    }
 }

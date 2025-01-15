@@ -7,6 +7,9 @@ import AddYourFirstMenuButton from '../UI/bakery/AddYourFirstMenuButton';
 import './BakeryPage.css';
 import BakedGood from '../UI/modules/BakedGood';
 import { useAuth } from '../../context/AuthContext';
+import BasicModal from '../UI/modals/BasicModal';
+import AddMenuItemForm from '../Forms/AddMenuItemForm';
+import EditBakeryDetails from '../Forms/EditBakeryDetailsForm';
 
 const Bakery = () => {
 
@@ -19,8 +22,7 @@ const Bakery = () => {
   useEffect(() => {
     fetchBakeryInformation();
 
-    console.log()
-  }, [id]);
+  }, [id, user]);
 
   const formatMenu = (DBbakery) => {
     const categorizedMenu = DBbakery.menu.reduce((accumulator, currentItem) => {
@@ -78,10 +80,19 @@ const Bakery = () => {
 
               <div className="item_container">
 
-                    <AddYourFirstMenuButton title="Add Your first Dough"/>
+                    <AddYourFirstMenuButton
+                     title="Add Your first Dough"
+                     className='floating_button'
+                     data_bs_toggle="modal"
+                     data_bs_target="#list_menu_item"
+                    />
 
+                    <BasicModal
+                     title="Add a Menu Item"
+                     body={<AddMenuItemForm bakery_id={bakery.id} reFetch={() => fetchBakeryInformation()}/>}
+                     modalId="list_menu_item"
+                    />
               </div>
-
           </div>
       )
 
@@ -137,31 +148,52 @@ const Bakery = () => {
               <img src="/3dshop.gif" alt="Loading" style={{ width: '300px' }} />
             )}
 
-            <h1>{bakery.name}</h1>
+            <div style={{ textAlign: 'center', cursor: 'pointer' }}>
+              
+
+              {/* no logged in user */}
+              {
+                user.user === null ? (
+                  <>
+                    
+                  </>
+                ) : (
+                  // find out if the current logged in user has the same id with creator_id 
+                  //there is a logged in user here
+                  bakery.creator === user.user.user_id ? (
+                    <>
+
+                    <h1>{bakery.name}</h1>
+                    <h3>{bakery.street}, {bakery.city}</h3>
+
+                    <button
+                     className="owner_edit_trigger"
+                     data_bs_toggle="modal"
+                     data-bs-toggle="modal"
+                     data-bs-target="#edit_bakery_details"
+                    >
+                      <i class="fa-solid fa-pen"></i>
+                      &nbsp;&nbsp;&nbsp;
+                      Edit Bakery Information
+                    </button>
+
+                    <BasicModal
+                      title={`Edit Details`}
+                      body={<EditBakeryDetails bakery={bakery} reFetch={() => fetchBakeryInformation()}/>}
+                      modalId="edit_bakery_details"
+                    />
+                    </>
+                  ) : (
+                    <>
+                      <h1>{bakery.name}</h1>
+                      <h3>{bakery.street}, {bakery.city}</h3>
+                    </>
+                  )
+                )
+              }
+            </div>
           </div>
-        </div>
-
-
-        {/* <div>
-
-                <div className="item_container">
-                  
-                  <button type="button" className="btn btn-outline-danger" > 🥐 Breads</button>
-                  <button type="button" className="btn btn-outline-danger" > 🍪 Cookies</button>
-                  <button type="button" className="btn btn-outline-danger" > 🍰 Pastries</button>
-                  <button type="button" className="btn btn-outline-danger" > 🧁 Custom</button>
-
-                </div>
-
-
-                <div className="item_container">
-
-                      <AddYourFirstMenuButton title="Add Your first Dough"/>
-
-                </div>
-
-            </div> */}
-        
+        </div>       
         {
           bakery.menu.length === 0 ? (
             //if i own the bakery i want to show begin adding item 
@@ -210,10 +242,35 @@ const Bakery = () => {
                           style={{
                             borderTopLeftRadius: '3px',
                             padding: '1rem',
+                            minWidth: '844'
                           }}
                         >
                           {`${category.charAt(0).toUpperCase()}${category.slice(1)}`}
+
+                          {
+                            bakery.creator === user.user.user_id  ? (
+                              <>
+                              
+                              <span
+                                className='add_span'
+                                data-bs-toggle="modal"
+                                data-bs-target="#list_menu_item"
+                              >
+                                  <i class="fa-solid fa-plus"></i>
+                              </span>
+                              </>
+                            ) : (
+                              null
+                            )
+                          }
                         </h4>
+                        
+                        <BasicModal
+                                title="Add a Menu Item"
+                                body={<AddMenuItemForm bakery_id={bakery.id} reFetch={() => fetchBakeryInformation()} />}
+                                modalId="list_menu_item"
+                              />
+                          
 
                         <div
                           style={{
@@ -225,7 +282,7 @@ const Bakery = () => {
                           }}
                         >
                           {menu[category].map((item, index) => (
-                            <BakedGood item={item} key={index} />
+                            <BakedGood item={item} key={index} bakery={bakery} reFetch={() => fetchBakeryInformation()} />
                           ))}
                         </div>
                       </div>
