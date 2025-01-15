@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext';
-import { createBakery } from '../../services/bakeryServices'
+import { createBakery, updateBakery } from '../../services/bakeryServices'
 import { states } from "../../datas/us_cities";
 
 
-const AddBakeryForm = ({ user }) => {
-    const { login } = useAuth()
+const AddBakeryForm = ({  }) => {
+    const { user } = useAuth()
     const [formData, setFormData] = useState({
       email : "",
       password : ""
@@ -15,13 +15,17 @@ const AddBakeryForm = ({ user }) => {
   
     const handleSubmit = async (event) => {
       event.preventDefault()
-     
-      console.log(formData)
+      const creator = user.user_id
+      const dataToSubmit = { ...formData, creator };
+      
+      
+      console.log(dataToSubmit)
       try {
-          const response = await createBakery(formData)
-          
-          // if(response.error) throw new Error(response.error);          
-          console.log(response)      
+          const response = await createBakery(dataToSubmit)
+                   
+          const response2 = await updateBakery(response)
+
+          console.log(response2)
   
       } catch (error) {
           alert(error.message)

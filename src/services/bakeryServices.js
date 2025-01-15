@@ -97,3 +97,28 @@ export const createBakery = async (formData) => {
         return error
     }
 }
+
+export const updateBakery = async (bakery, creatorId) => {
+
+    try {
+        const res = await fetch(`${BASE_URL}/bakeries/${bakery.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type' : 'application/json' },
+            body: JSON.stringify({
+                ...bakery, 
+                creator_id : creatorId
+            })
+            
+        })
+        const response = await res.json()
+
+        if(response.ok) {
+            
+        }
+
+
+    } catch (error) {
+        
+    }
+
+}
