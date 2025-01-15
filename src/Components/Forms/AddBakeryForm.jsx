@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext';
 import { createBakery, updateBakery } from '../../services/bakeryServices'
 import { states } from "../../datas/us_cities";
-
+import './AddBakeryForm.css';
 
 const AddBakeryForm = ({  }) => {
     const { user } = useAuth()
@@ -34,10 +34,11 @@ const AddBakeryForm = ({  }) => {
     }
 
   return (
-    <div>
+    <div className='add-bakery-div'>
+      <div className='motto'>
         <h1>Your Business is Our Priority</h1>
-
-        <form onSubmit={handleSubmit}>
+</div>
+        <form className='add-bakery-form' onSubmit={handleSubmit}>
             
             <label htmlFor="name"> Bakery Name: </label>
             <input 
