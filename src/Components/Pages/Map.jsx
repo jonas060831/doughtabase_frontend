@@ -225,7 +225,7 @@ const Map = () => {
       const lng = longLat[0]
       const lat = longLat[1]
       
-      new mapboxgl.Marker( { color: '#d0bda7'} ) //change the color of the user location to the color of doughtabse
+      new mapboxgl.Marker( { color: '#745537'} ) //change the color of the user location to the color of doughtabase
             .setLngLat([lng, lat])
             .setPopup(new mapboxgl.Popup().setHTML(
               "<div style={{ width: '100%',display: 'flex', flexDirection: 'column', gap: '2rem', justifyContent: 'center', alignItems: 'center' }}> <img src='/blinking.gif' alt='/CZ5s.gif' style={{ width: '100px' }} /> <h6>Your Approximate</h6> <h6>Location</h6></div>"

@@ -39,7 +39,11 @@ const OpenBakeryButton = () => {
     </button>
 
 
-    <BasicModal title="Add Bakery" body={<AddBakeryForm/>} user={user}/>
+    <BasicModal
+     title="Add Bakery"
+     body={<AddBakeryForm/>}
+     user={user}
+    />
     </>
   )
 }
