@@ -1,0 +1,22 @@
+.giant_doughtabase_button {
+    margin: 6rem;
+    background-color: white;
+    width: 300px;
+    color: #dc3545;
+    padding: 2rem;
+    border-radius: 6px;
+    border-color: #dc3545;
+    background-size: contain; /* Ensures the image covers the button */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    text-align: center; /* Centers text within the button */
+    display: flex; /* Ensures it behaves like a button */
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.giant_doughtabase_button:hover {
+    background-color: #dc3545;
+    color: white;
+}

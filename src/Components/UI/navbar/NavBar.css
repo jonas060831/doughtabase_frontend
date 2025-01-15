@@ -2,3 +2,18 @@
     color: white;
     text-decoration: none;
 }
+
+.dropdown-menu {
+    min-width: 13vw
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu li a:hover {
+    color: rgb(117, 74, 225);
+}
+
+.input-mysize { width: 350px }

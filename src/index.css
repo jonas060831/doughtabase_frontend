@@ -85,3 +85,8 @@ button:focus-visible {
   --default-theme-color : #745537
 }
 
+
+.ui_container {
+  height: auto;
+  padding-bottom: 10rem;
+}

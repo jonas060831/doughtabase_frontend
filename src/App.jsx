@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
 import Map from "./Components/Pages/Map";
 import Home from "./Components/Pages/Home";
 import Specialties from "./Components/Pages/Specialties";
@@ -12,8 +12,9 @@ import SignUpPage from "./Components/Pages/SignUpPage.jsx";
 import OpenBakeryButton from "./Components/UI/bakery/OpenBakeryButton.jsx";
 import BakeryIndex from "./Components/Pages/BakeryIndex.jsx";
 
+
+
 const  App = () => {
- 
   return (
     <AuthProvider>
       <>
@@ -34,8 +35,11 @@ const  App = () => {
           {/* protected routes */}
         </Routes>
         <Footer/>
+
+        <OpenBakeryButton/>
+
       </BrowserRouter>
-      <OpenBakeryButton />
+      
       
       </>
       </AuthProvider>

@@ -3,3 +3,10 @@
     height: 60vh;
     overflow-y: scroll;
 }
+
+.item_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
