@@ -1,47 +1,46 @@
 import { useState } from "react";
-import './NavBar.css' 
+import "./NavBar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { queryBakeries } from "../../../services/bakeryServices";
 import AuthButton from "../auth-button/AuthButton";
 
 const NavBar = () => {
   //state of input and we also need to debound the search as soon as possible
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-
   const handleQuery = async (event) => {
-
     //prevent reload of screen
-    event.preventDefault()
+    event.preventDefault();
 
     try {
       //1. we did do a server request
-      const match = await queryBakeries(query)
+      const match = await queryBakeries(query);
 
       //3. now we are entertaining the forks
-      if(!query.trim()) { //query is empty
-        alert('please search using name or city')
-        setQuery('')
+      if (!query.trim()) {
+        //query is empty
+        alert("please search using name or city");
+        setQuery("");
       } else if (match.length === 0) {
-        alert('sorry no result found from our database')
-        setQuery('')
+        alert("sorry no result found from our database");
+        setQuery("");
       } else {
         //we dont want to navigate when query is empty
-        navigate(`/map?query=${query}`)
+        navigate(`/map?query=${query}`);
       }
-
     } catch (error) {
-     console.log(error) 
+      console.log(error);
     }
-  }
-
+  };
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light sticky-top z-1" style={{backgroundColor: '#745537', color: 'white'}}>
+      <nav
+        className="navbar navbar-expand-lg navbar-light sticky-top z-1"
+        style={{ backgroundColor: "#745537", color: "white" }}
+      >
         <div className="container-fluid">
-          
           <NavLink className="homeLink" to='/'>
             
             <div style={{ display: 'flex', gap: '0.1rem' }}>
@@ -57,7 +56,6 @@ const NavBar = () => {
             </div>
           </NavLink>
 
-
           {/* toggle button */}
           <button
             className="navbar-toggler"
@@ -72,8 +70,6 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-
               <li className="p-2" >
                 <NavLink to="/specialties" style={{color: 'white', textDecoration: 'none' }}>Specialties</NavLink>
               </li>
@@ -103,7 +99,6 @@ const NavBar = () => {
                 </ul>
               </li>
             </ul>
-
 
             {/* search box */}
             <form className="d-flex" role="search" onSubmit={handleQuery}>
