@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-const BasicModal = ({ title, body, user }) => {
+const BasicModal = ({ title, body }) => {
 
   return (
     <div className="modal" tabindex="-1" id='exampleModal'>
@@ -10,7 +10,7 @@ const BasicModal = ({ title, body, user }) => {
                 <h5 className="modal-title">{title}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
                 {body}
             </div>
             </div>

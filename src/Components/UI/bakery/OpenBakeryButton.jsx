@@ -6,12 +6,7 @@ import AddBakeryForm from '../../Forms/AddBakeryForm'
 
 
 const OpenBakeryButton = () => {
-  const {  user } = useAuth()
-  
-
-  useEffect(() => {
-    console.log(user)
-  }, [])
+  const { user } = useAuth()
 
   if(!user) return (
     <>
@@ -20,7 +15,7 @@ const OpenBakeryButton = () => {
     className='floating_button'
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
-    onClick={() => alert('You must login to create a bakery')}
+    onClick={() => alert('You must login to list your bakery')}
     >
         <i className="fa-solid fa-plus"></i>
     </button>

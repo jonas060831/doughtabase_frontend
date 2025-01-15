@@ -3,9 +3,12 @@ import { useAuth } from '../../context/AuthContext';
 import { createBakery, updateBakery } from '../../services/bakeryServices'
 import { states } from "../../datas/us_cities";
 import './AddBakeryForm.css';
+import { useNavigate } from 'react-router-dom';
 
-const AddBakeryForm = ({  }) => {
+
+const AddBakeryForm = () => {
     const { user } = useAuth()
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
       email : "",
       password : ""
@@ -17,15 +20,15 @@ const AddBakeryForm = ({  }) => {
       event.preventDefault()
       const creator = user.user_id
       const dataToSubmit = { ...formData, creator };
-      
-      
-      console.log(dataToSubmit)
+    
+
       try {
           const response = await createBakery(dataToSubmit)
-                   
-          const response2 = await updateBakery(response)
 
-          console.log(response2)
+          navigate(`/bakeries/${response.id}`)
+
+          
+          
   
       } catch (error) {
           alert(error.message)
@@ -97,7 +100,7 @@ const AddBakeryForm = ({  }) => {
              </select>
 
 
-            <input type="submit" className="submit" />
+            <input type="submit" className="submit"  data-bs-dismiss="modal" />
         </form>
     </div>
   )

@@ -41,16 +41,19 @@ const NavBar = () => {
         style={{ backgroundColor: "#745537", color: "white" }}
       >
         <div className="container-fluid">
-          <NavLink className="homeLink" to="/">
-            <img
-              src="src/assets/DALL·E 2025-01-10 10.47.27 - A creative and modern icon for a bakery DoughtaBase, combining a database stack symbol with bakery elements. The icon features a database cylinder wit.webp"
-              alt="Logo"
-              width="30"
-              height="24"
-              className="d-inline-block align-text-top"
-              // style={{color: 'white'}}
-            />
-            DoughtaBase 2025
+          <NavLink className="homeLink" to='/'>
+            
+            <div style={{ display: 'flex', gap: '0.1rem' }}>
+              <img
+                src="/logo-3.png"
+                alt="Logo"
+                width="30"
+                height="30"
+                className="d-inline-block align-text-top"
+                style={{ marginTop:'-0.3rem'}}
+              />
+              DoughtaBase 2025
+            </div>
           </NavLink>
 
           {/* toggle button */}
@@ -67,38 +70,48 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink
-                  to="specialties"
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#"
-                >
-                  Speacialties
-                </NavLink>
+              <li className="p-2" >
+                <NavLink to="/specialties" style={{color: 'white', textDecoration: 'none' }}>Specialties</NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  to="bakeries"
-                  className="nav-link active"
-                  aria-disabled="true"
+
+
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{color: 'white' }}
                 >
-                  Bakeries
-                </NavLink>
+                  More
+                </a>
+                <ul className="dropdown-menu">
+                  <li className="p-2">
+                    <NavLink to="/bakeries" >Bakeries</NavLink>
+                  </li>
+                  <li className="p-2">
+                    <hr className="dropdown-divider"></hr>
+                  </li>
+                  <li className="p-2">
+                    <NavLink to="/about" > About Doughtabase™ </NavLink>
+                  </li>
+                </ul>
               </li>
             </ul>
 
             {/* search box */}
             <form className="d-flex" role="search" onSubmit={handleQuery}>
               <input
-                className="form-control me-2"
+                className="form-control me-1"
                 type="search"
-                placeholder="try bakery or city"
+                placeholder="try bakery name or city"
                 aria-label="Search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                style={{ width: '300px' }}
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline-success me-3" type="submit">
                 <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
