@@ -1,9 +1,9 @@
 import React from 'react'
 
-const BasicModal = ({ title, body }) => {
+const BasicModal = ({ title, body, modalId }) => {
 
   return (
-    <div className="modal" tabindex="-1" id='exampleModal'>
+    <div className="modal" tabindex="-1" id={modalId}>
         <div className="modal-dialog">
             <div className="modal-content">
             <div className="modal-header">

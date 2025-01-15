@@ -1,15 +1,14 @@
 import React from 'react'
 import './AddYourFirstMenuButton.css'
 
-const AddYourFirstMenuButton = ({ title }) => {
-    
-    //i need to know if there is log in user
+const AddYourFirstMenuButton = ({ title, data_bs_toggle, data_bs_target}) => {
 
-    //if the login user have the same id as the creator of the bakery then show the
-    //the add your first dough button
-  
     return (
-    <button className='giant_doughtabase_button'>
+    <button
+     className='giant_doughtabase_button'
+     data-bs-toggle={data_bs_toggle}
+     data-bs-target={data_bs_target}
+    >
        <i class="fa-solid fa-mug-hot"></i> {title}
     </button>
   )

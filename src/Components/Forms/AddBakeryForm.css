@@ -67,3 +67,7 @@
     background-color: #5c432b;
 }
 
+.add-bakery-form input[type=radio] {
+    width: 100%;
+    font-family: 'Libre Baskerville', 'Tahoma';
+}

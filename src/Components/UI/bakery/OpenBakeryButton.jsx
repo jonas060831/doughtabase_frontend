@@ -28,7 +28,7 @@ const OpenBakeryButton = () => {
     <button
     className='floating_button'
     data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
+    data-bs-target="#list_bakery"
     >
         <i className="fa-solid fa-plus"></i>
     </button>
@@ -37,7 +37,7 @@ const OpenBakeryButton = () => {
     <BasicModal
      title="Add Bakery"
      body={<AddBakeryForm/>}
-     user={user}
+     modalId="list_bakery"
     />
     </>
   )

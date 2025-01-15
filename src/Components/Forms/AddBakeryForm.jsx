@@ -9,10 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const AddBakeryForm = () => {
     const { user } = useAuth()
     const navigate = useNavigate()
-    const [formData, setFormData] = useState({
-      email : "",
-      password : ""
-    })
+    const [formData, setFormData] = useState({})
   
     const handleChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
   
@@ -38,9 +35,11 @@ const AddBakeryForm = () => {
 
   return (
     <div className='add-bakery-div'>
-      <div className='motto'>
-        <h1>Your Business is Our Priority</h1>
-</div>
+
+        <div className='motto'>
+          <h1>Your Business is Our Priority</h1>
+        </div>
+        
         <form className='add-bakery-form' onSubmit={handleSubmit}>
             
             <label htmlFor="name"> Bakery Name: </label>
