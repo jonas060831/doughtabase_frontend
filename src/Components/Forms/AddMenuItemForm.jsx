@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddBakeryForm.css';
 import { addNewItem } from '../../services/menuItemServices';
 
-const AddMenuItemForm = ({ bakery_id, reFetch }) => {
+const AddMenuItemForm = ({ bakery_id, reFetch, category }) => {
   const [formData, setFormData] = useState({
     name: '',
     price: '',
@@ -14,6 +14,10 @@ const AddMenuItemForm = ({ bakery_id, reFetch }) => {
     'scones', 'pies', 'rolls', 'doughs', 'snacks', 
     'gluten-free', 'vegans',
   ];
+
+  useEffect(() => {
+    console.log(category)
+  })
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });

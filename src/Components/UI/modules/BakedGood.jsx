@@ -5,7 +5,7 @@ import { addSpecialty, deleteSpecialty } from '../../../services/specialtyServic
 
 const BakedGood = ({ item, reFetch, bakery }) => {
  
-  const user = useAuth()
+  const {user} = useAuth()
 
   const handleDelete = async (event) => {
     event.preventDefault()
@@ -47,7 +47,7 @@ const BakedGood = ({ item, reFetch, bakery }) => {
                 
 
                 {
-                  user?.user?.user_id === bakery.creator ? (
+                  user?.user_id === bakery.creator ? (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
                         <button className='btn btn-danger' onClick={handleDelete} >Delete</button>
 
