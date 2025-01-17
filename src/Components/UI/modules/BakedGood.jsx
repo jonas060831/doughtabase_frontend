@@ -12,7 +12,6 @@ const BakedGood = ({ item, reFetch, bakery }) => {
 
     const res = await deleteMenuItem(item.id)
 
-    console.log(res)
 
     reFetch()
   }
@@ -21,21 +20,15 @@ const BakedGood = ({ item, reFetch, bakery }) => {
 
     const res = await addSpecialty(item.id, bakery.id)
     reFetch()
-    console.log(res)
   }
 
   const handleDeleteSpecialty  = async (itemId) => {
     
-
     const specialty= bakery.specialties.find((specialty) => specialty.item === itemId)
-
-    console.log(specialty)
-
     const res = await deleteSpecialty(specialty.id)
 
-    console.log(res)
     reFetch()
-    console.log(res)
+
   }
 
   const exist = bakery.specialties.some(specialty => specialty.item === item.id)
@@ -54,7 +47,7 @@ const BakedGood = ({ item, reFetch, bakery }) => {
                 
 
                 {
-                  user.user.user_id === bakery.creator ? (
+                  user?.user?.user_id === bakery.creator ? (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
                         <button className='btn btn-danger' onClick={handleDelete} >Delete</button>
 
