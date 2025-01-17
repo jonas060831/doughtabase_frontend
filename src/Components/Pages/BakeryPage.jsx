@@ -153,14 +153,14 @@ const Bakery = () => {
 
               {/* no logged in user */}
               {
-                user.user === null ? (
+                user?.user === null ? (
                   <>
                     
                   </>
                 ) : (
                   // find out if the current logged in user has the same id with creator_id 
                   //there is a logged in user here
-                  bakery.creator === user.user.user_id ? (
+                  bakery.creator === user?.user?.user_id ? (
                     <>
 
                     <h1>{bakery.name}</h1>
@@ -248,7 +248,7 @@ const Bakery = () => {
                           {`${category.charAt(0).toUpperCase()}${category.slice(1)}`}
 
                           {
-                            bakery.creator === user.user.user_id  ? (
+                            bakery.creator === user?.user?.user_id  ? (
                               <>
                               
                               <span

@@ -10,7 +10,6 @@ import CustomPopUp from "../UI/map/pin/CustomPopUp";
 // Add your Mapbox access token
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-console.log(mapboxgl.accessToken);
 
 const Map = () => {
   const mapContainerRef = useRef(null)
