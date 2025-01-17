@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getBakery, getBakeryPhoto } from '../../services/bakeryServices';
-import useTimeAgo from '../UI/utils/timeAgo';
 import AddYourFirstMenuButton from '../UI/bakery/AddYourFirstMenuButton';
 
 import './BakeryPage.css';
@@ -21,7 +20,6 @@ const Bakery = () => {
 
   useEffect(() => {
     fetchBakeryInformation();
-
   }, [id, user]);
 
   const formatMenu = (DBbakery) => {
@@ -55,8 +53,6 @@ const Bakery = () => {
       navigate(`/`);
     }
   };
-
-  const timeAgo = useTimeAgo(bakery?.registered_date);
 
   if (!bakery && !menu) return <div>Loading...</div>;
   if (bakery?.detail) return <div>Sorry, no data found.</div>;
@@ -114,9 +110,9 @@ const Bakery = () => {
       )
 
     }
-    
-
   }
+
+  if(user === null) return null
 
   return (
     <div className='ui_container'>
