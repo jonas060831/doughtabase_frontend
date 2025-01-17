@@ -20,7 +20,8 @@ const Bakery = () => {
 
   useEffect(() => {
     fetchBakeryInformation();
-  }, [id, user]);
+
+  }, [id, user, loading]);
 
   const formatMenu = (DBbakery) => {
     const categorizedMenu = DBbakery.menu.reduce((accumulator, currentItem) => {
@@ -61,7 +62,7 @@ const Bakery = () => {
   const renderBakeryOwnerShip = () => {
 
     //if there is a user and that user owns the bakery show the begin adding items
-    if(user?.user?.user_id === bakery.creator) {
+    if(user?.user?.user_id === bakery?.creator) {
       return (
         <div>
 
@@ -162,7 +163,7 @@ const Bakery = () => {
                 ) : (
                   // find out if the current logged in user has the same id with creator_id 
                   //there is a logged in user here
-                  bakery.creator === user?.user?.user_id ? (
+                  bakery?.creator === user?.user?.user_id ? (
                     <>
 
                     <h1>{bakery.name}</h1>
@@ -250,7 +251,7 @@ const Bakery = () => {
                           {`${category.charAt(0).toUpperCase()}${category.slice(1)}`}
 
                           {
-                            bakery.creator === user?.user?.user_id  ? (
+                            bakery?.creator === user?.user?.user_id  ? (
                               <>
                               
                               <span
