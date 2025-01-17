@@ -63,7 +63,7 @@ const Bakery = () => {
   const renderBakeryOwnerShip = () => {
 
     //if there is a user and that user owns the bakery show the begin adding items
-    if(user?.user?.user_id === bakery?.creator) {
+    if(user?.user_id === bakery?.creator) {
       return (
         <div>
 
@@ -255,10 +255,10 @@ const Bakery = () => {
                         </h4>
                         
                         <BasicModal
-                                title="Add a Menu Item"
-                                body={<AddMenuItemForm bakery_id={bakery.id} reFetch={() => fetchBakeryInformation()} />}
-                                modalId="list_menu_item"
-                              />
+                          title="Add a Menu Item"
+                          body={<AddMenuItemForm bakery_id={bakery.id} reFetch={() => fetchBakeryInformation()} category={category} />}
+                          modalId="list_menu_item"
+                        />
                           
 
                         <div

@@ -5,9 +5,6 @@ const AddItemButton = ({ bakeryOwner }) => {
 
   const { user, loading } = useAuth()
 
-  useEffect(() => {
-    console.log(user)
-  })
 
   if(loading) return <>loading...</>
   return (
