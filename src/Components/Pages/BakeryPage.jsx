@@ -54,6 +54,7 @@ const Bakery = () => {
     }
   };
 
+  if(loading) return <div>Loading....</div>
   if (!bakery && !menu) return <div>Loading...</div>;
   if (bakery?.detail) return <div>Sorry, no data found.</div>;
 
