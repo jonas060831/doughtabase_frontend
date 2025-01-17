@@ -12,7 +12,7 @@ import EditBakeryDetails from '../Forms/EditBakeryDetailsForm';
 
 const Bakery = () => {
 
-  const user = useAuth()
+  const {user, loading} = useAuth()
   const { id } = useParams();
   const [bakery, setBakery] = useState(null);
   const [menu, setMenu] = useState(null);
@@ -112,7 +112,12 @@ const Bakery = () => {
     }
   }
 
-  if(user === null) return null
+  if(loading) return <div>Loading...</div>
+
+  if (!bakery && !menu) return <div>Loading...</div>
+
+  if (bakery?.detail) return <div>Sorry, no data found.</div>
+
 
   return (
     <div className='ui_container'>
