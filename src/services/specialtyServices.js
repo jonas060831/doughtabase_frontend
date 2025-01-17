@@ -1,6 +1,14 @@
 const BASE_URL = import.meta.env.VITE_DOUGHTABASE_SERVER
 
+export const getSpecialties = async () => {
+    try {
+        const res = await fetch(`${BASE_URL}/specialties`)
 
+        return res.json()
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export const addSpecialty = async (itemId, bakeryId) => {
 
