@@ -9,6 +9,7 @@ import { useAuth } from '../../context/AuthContext';
 import BasicModal from '../UI/modals/BasicModal';
 import AddMenuItemForm from '../Forms/AddMenuItemForm';
 import EditBakeryDetails from '../Forms/EditBakeryDetailsForm';
+import AddItemButton from '../UI/auth-button/AddItemButton';
 
 const Bakery = () => {
 
@@ -163,7 +164,7 @@ const Bakery = () => {
                 ) : (
                   // find out if the current logged in user has the same id with creator_id 
                   //there is a logged in user here
-                  bakery?.creator === user?.user?.user_id ? (
+                  bakery?.creator === user?.user_id ? (
                     <>
 
                     <h1>{bakery.name}</h1>
@@ -250,22 +251,7 @@ const Bakery = () => {
                         >
                           {`${category.charAt(0).toUpperCase()}${category.slice(1)}`}
 
-                          {
-                            bakery?.creator === user?.user?.user_id  ? (
-                              <>
-                              
-                              <span
-                                className='add_span'
-                                data-bs-toggle="modal"
-                                data-bs-target="#list_menu_item"
-                              >
-                                  <i class="fa-solid fa-plus"></i>
-                              </span>
-                              </>
-                            ) : (
-                              null
-                            )
-                          }
+                          <AddItemButton  bakeryOwner={bakery?.creator} />
                         </h4>
                         
                         <BasicModal
