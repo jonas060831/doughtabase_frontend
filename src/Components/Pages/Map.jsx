@@ -27,7 +27,7 @@ const Map = () => {
   const loadMap = () => {
     const initialMap = new mapboxgl.Map({
       container: mapContainerRef.current,
-      // style: import.meta.env.VITE_MAPBOX_CSS, //Nate Maps Design
+      style: import.meta.env.VITE_MAPBOX_CSS,
       center: startingLocationView,
       zoom: 12,
     });

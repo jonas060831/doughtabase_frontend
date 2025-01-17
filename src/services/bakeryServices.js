@@ -8,7 +8,7 @@ export const getBakeries = async () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log('Data received from API:', data); // Log the raw response
+
       return data;
     } catch (error) {
       console.error('Error in getBakeries:', error.message);
